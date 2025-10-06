@@ -1,14 +1,16 @@
+local function augroup(name)
+    return vim.api.nvim_create_augroup("usernvim_" .. name, { clear = true })
+end
 
 
-
--- {{{ Highlight yanked text 
+-- {{{ Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup("highlight_yank"),
     callback = function()
         (vim.hl or vim.highlight).on_yank()
     end,
 })
--- }}} 
+-- }}}
 
 -- {{{ Reopen buffer to last cursor location
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -49,6 +51,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         local bufnr = event.buf
 
+        -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        --     buffer = bufnr,
+        --     group = vim.api.nvim_create_augroup('LspDiagnosticHover' .. bufnr, { clear = true }),
+        --     callback = function()
+        --         local opts = {
+        --             focusable = false,
+        --             close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
+        --             border = 'rounded',
+        --             source = 'always',
+        --             prefix = ' ',
+        --             scope = 'cursor',
+        --         }
+        --         vim.diagnostic.open_float(nil, opts)
+        --     end,
+        -- })
+
         --============================================================================--
         -- PART 1: SETUP LSP FORMATTING ON SAVE
         --============================================================================--
@@ -70,6 +88,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
             })
         end
 
+
+        -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        --     group = vim.api.nvim_create_augroup('LspDiagnosticHover', { clear = true }),
+        --     callback = function()
+        --         -- Only open float if there are diagnostics at the cursor position
+        --         if next(vim.diagnostic.get_line_diagnostics()) then
+        --             vim.diagnostic.open_float(nil, { focus = false })
+        --         end
+        --     end,
+        -- })
+
+
+
+
         --============================================================================--
         -- PART 2: SETUP LSP KEYMAPS AND UI FEATURES
         --============================================================================--
@@ -84,15 +116,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- Define keymaps for common LSP actions, using the 'map' helper function.
         -- These provide quick access to LSP functionality like renaming, code actions, and navigation.
-        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+        -- Neovim global defaults keymaps (https://neovim.io/doc/user/lsp.html#lsp-defaults),
+        -- some replaced by Telescope functionality.
         map('gra', vim.lsp.buf.code_action, 'Code [A]ction', { 'n', 'x' }) -- Works in normal and visual mode
-        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+        -- Additional Telescope LSP Picker keymaps
+        -- (https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#neovim-lsp-pickers)
+        map('grw', require('telescope.builtin').lsp_workspace_symbols, 'Open [W]orkspace Symbols')
+        map('grx', require('telescope.builtin').diagnostics, 'Telescope [X]Diagnostics')
+        map('grT', require('telescope.builtin').treesitter, 'Telescope [T]reesitter')
         map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
         map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
         map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-        map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
         -- A compatibility function to handle API differences between Neovim 0.10 and 0.11
         -- when checking if an LSP client supports a specific method for a given buffer.
@@ -171,6 +210,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
             map('<leader>tC', vim.lsp.codelens.run, '[C]ode [L]ens Action')
         end
     end,
- })
+})
 
 -- }}}
