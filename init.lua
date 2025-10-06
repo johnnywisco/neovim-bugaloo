@@ -7,4 +7,5 @@ require("config.lazy")
 -- {{{ Enable LSPs here
 vim.lsp.enable("harper_ls")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("basedpyright")
 -- }}}
