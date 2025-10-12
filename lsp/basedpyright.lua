@@ -37,13 +37,17 @@ return {
     settings = {
         basedpyright = {
             analysis = {
+                autoFormatStrings = true,
                 autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
                 diagnosticMode = 'openFilesOnly',
+                inlayHints = true,
+                useLibraryCodeForTypes = true,
             },
         },
     },
     on_attach = function(client, bufnr)
+        client.handlers["textDocument/publishDiagnostics"] = function() end
+
         vim.api.nvim_buf_create_user_command(bufnr, 'LspPyrightOrganizeImports', function()
             local params = {
                 command = 'basedpyright.organizeimports',

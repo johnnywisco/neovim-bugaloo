@@ -100,6 +100,9 @@ vim.o.scrolloff = 15
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Set default border for all floating windows
+vim.opt.winborder = 'rounded'
+
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -115,6 +118,7 @@ vim.diagnostic.config {
     severity_sort = true,
     float = { border = 'rounded', source = 'if_many' },
     underline = { severity = vim.diagnostic.severity.ERROR },
+    update_in_insert = true,
     signs = vim.g.have_nerd_font and {
         text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
