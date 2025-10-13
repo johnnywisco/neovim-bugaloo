@@ -1,10 +1,10 @@
-
 -- {{{ No-op keymaps so which-key is more descriptive
 vim.keymap.set("n", "<leader>s", function() end, { desc = "[s]earch options" })
 vim.keymap.set("n", "<leader>t", function() end, { desc = "[t]oggle misc. settings" })
 -- }}}
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "NvimTree [e]xplorer"})
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "NvimTree [e]xplorer" })
+vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "clear [h]ighlights" })
 
 -- vim.keymap.set("n", "<Leader>e", function()
 --   require("snacks.picker").explorer()

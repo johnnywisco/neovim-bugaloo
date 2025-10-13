@@ -78,14 +78,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     vim.lsp.buf.format({ async = false, id = client.id })
                 end,
             })
-            -- Notify after saving
-            vim.api.nvim_create_autocmd('BufWritePost', {
-                buffer = event.buf,
-                group = formatonsave_augroup,
-                callback = function()
-                    vim.notify("Buffer formatted.", vim.log.levels.INFO)
-                end,
-            })
         end
 
 
