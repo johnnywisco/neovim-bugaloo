@@ -103,19 +103,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 
-        -- Check if capability works with Current LSP
-        local cap_check = 'textDocument/codeLens'
-        if client.supports_method(cap_check) then
-            -- Enable inline completion for this client and buffer
-            -- The exact method for enabling might vary slightly depending on your setup
-            -- and any specific inline completion plugins you are using.
-            -- For native Neovim support, you would typically rely on the client's capabilities.
-            print("Yay! LSP Client supports: ", cap_check)
-            -- You might need to add specific configuration here if using a plugin like Tabby
-            -- to integrate with its agent for inline completions.
-        else
-            vim.notify("BOO! LSP client does not support. ", cap_check, vim.log.levels.WARN)
-        end
+        -- -- Check if capability works with Current LSP
+        -- local cap_check = 'textDocument/codeLens'
+        -- if client.supports_method(cap_check) then
+        --     -- Enable inline completion for this client and buffer
+        --     -- The exact method for enabling might vary slightly depending on your setup
+        --     -- and any specific inline completion plugins you are using.
+        --     -- For native Neovim support, you would typically rely on the client's capabilities.
+        --     print("Yay! LSP Client supports: ", cap_check)
+        --     -- You might need to add specific configuration here if using a plugin like Tabby
+        --     -- to integrate with its agent for inline completions.
+        -- else
+        --     vim.notify("BOO! LSP client does not support. ", cap_check, vim.log.levels.WARN)
+        -- end
 
 
         -- Add capabilities here
