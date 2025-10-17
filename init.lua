@@ -4,6 +4,9 @@ require("config.autocmds")
 require("config.lazy")
 require("config.lsp")
 
+-- Set the colorscheme
+vim.cmd('colorscheme nord')
+
 -- Iterate files in ~/.config/nvim/lsp/ directory to automatically enable LSPs
 local lsp_configs = {}
 

@@ -10,6 +10,9 @@ return {
             --  - ci'  - [C]hange [I]nside [']quote
             require('mini.ai').setup { n_lines = 500 }
 
+            -- Added mini.diff
+            -- require('mini.diff').setup {}
+
             -- Presets for common options. It will only change option if it wasn't
             -- manually set before.
             require('mini.basics').setup {}
