@@ -6,26 +6,26 @@ return {
         -- ---@type ibl.config
         config = function()
             local highlight = {
-                'RainbowRed',
-                'RainbowYellow',
-                'RainbowBlue',
-                'RainbowOrange',
-                'RainbowGreen',
-                'RainbowViolet',
-                'RainbowCyan',
+                'Nord1',
+                'Nord2',
+                'Nord3',
+                'Nord4',
+                'Nord5',
+                'Nord6',
+                'Nord7',
             }
 
             local hooks = require 'ibl.hooks'
 
             -- Setup highlight groups every time the colorscheme changes
             hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-                vim.api.nvim_set_hl(0, 'RainbowRed', { fg = '#E06C75' })
-                vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = '#E5C07B' })
-                vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = '#61AFEF' })
-                vim.api.nvim_set_hl(0, 'RainbowOrange', { fg = '#D19A66' })
-                vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = '#98C379' })
-                vim.api.nvim_set_hl(0, 'RainbowViolet', { fg = '#C678DD' })
-                vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = '#56B6C2' })
+                vim.api.nvim_set_hl(0, 'Nord1', { fg = '#bf616a' })
+                vim.api.nvim_set_hl(0, 'Nord2', { fg = '#d08770' })
+                vim.api.nvim_set_hl(0, 'Nord3', { fg = '#ebcb8b' })
+                vim.api.nvim_set_hl(0, 'Nord4', { fg = '#a3be8c' })
+                vim.api.nvim_set_hl(0, 'Nord5', { fg = '#b48ead' })
+                vim.api.nvim_set_hl(0, 'Nord6', { fg = '#5e81ac' })
+                vim.api.nvim_set_hl(0, 'Nord7', { fg = '#8fbcbb' })
             end)
 
             require('ibl').setup {
