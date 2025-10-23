@@ -23,19 +23,3 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window 
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 -- }}}
-
--- {{{ Toggle colorcolumn at 80 & 100 chars
-local function toggle_colorcolumn()
-    local current = vim.opt.colorcolumn:get()
-    if #current == 0 then
-        vim.opt.colorcolumn = "80,100"
-        vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#343042" }) -- Set your desired color
-    else
-        vim.opt.colorcolumn = ""
-        -- Optional: clear or dim the highlight
-        vim.api.nvim_set_hl(0, "ColorColumn", { bg = "NONE" })
-    end
-end
--- Set keymap for color comments
-vim.keymap.set("n", "<leader>tc", toggle_colorcolumn, { desc = "Toggle [c]olorcolumn" })
--- }}}
