@@ -146,6 +146,18 @@ vim.diagnostic.config {
 }
 -- }}}
 
+-- 1. Set the folding method to look for markers in the text
+vim.opt.foldmethod = 'marker'
+
+-- 2. Define the start and end markers
+-- The format is a string with the start and end markers separated by a comma.
+vim.opt.foldmarker = '-- {{{,-- }}}'
+
+-- Optional, but recommended for a better experience:
+vim.opt.foldlevelstart = 99 -- Start with all folds open when you enter a buffer
+vim.opt.foldenable = true   -- Make sure folding is enabled
+
+
 
 -- vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
 
