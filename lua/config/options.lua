@@ -24,6 +24,7 @@ vim.g.python3_host_prog = "~/projects/.venv/neovim/bin/python"
 -- Enable spell checking and set language
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+vim.opt.spelloptions = "camel"
 
 -- Display line numbers
 vim.o.number = true
