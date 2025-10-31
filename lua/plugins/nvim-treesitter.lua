@@ -9,7 +9,8 @@ return {
         -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
         opts = {
             ensure_installed = { 'bash', 'c', 'diff', 'gitcommit', 'gitignore', 'html', 'lua',
-                'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'regex', 'vim', 'vimdoc' },
+                'jinja', 'jinja_inline', 'luadoc', 'markdown', 'markdown_inline', 'python',
+                'query', 'regex', 'vim', 'vimdoc' },
             -- Auto-install languages that are not installed
             auto_install = true,
             highlight = {

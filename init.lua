@@ -16,3 +16,6 @@ for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
 end
 
 vim.lsp.enable(lsp_configs)
+
+
+vim.lsp.set_log_level("debug")

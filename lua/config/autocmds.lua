@@ -30,3 +30,25 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 -- }}}
+
+-- {{{ Properly set file types for yaml.ansible and other misc files.
+local configure = function()
+    vim.filetype.add({
+        pattern = {
+            [".*/group_vars/.*%.ya?ml"] = "yaml.ansible",
+            [".*/host_vars/.*%.ya?ml"] = "yaml.ansible",
+            [".*/roles/.*/.*%.ya?ml"] = "yaml.ansible",
+            [".*/tasks/.*%.ya?ml"] = "yaml.ansible",
+            [".*/handlers/.*%.ya?ml"] = "yaml.ansible",
+            [".*/playbook.*%.ya?ml"] = "yaml.ansible",
+            [".*/site.*%.ya?ml"] = "yaml.ansible",
+            [".*/main%.ya?ml"] = "yaml.ansible",
+        },
+    })
+end
+
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    group = vim.api.nvim_create_augroup("FiletypeOverrides", {}),
+    callback = configure,
+})
+-- }}}
