@@ -18,8 +18,8 @@ vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
 
 -- Python venv where "pynvim" library installed.
-vim.g.python_host_prog = "~/projects/.venv/neovim/bin/python"
-vim.g.python3_host_prog = "~/projects/.venv/neovim/bin/python"
+vim.g.python_host_prog = "/home/johnny/.local/venvs/neovim/bin/python"
+vim.g.python3_host_prog = "/home/johnny/.local/venvs/neovim/bin/python"
 
 -- Enable spell checking and set language
 vim.opt.spell = true
