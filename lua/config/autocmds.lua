@@ -43,6 +43,7 @@ local configure = function()
             [".*/playbook.*%.ya?ml"] = "yaml.ansible",
             [".*/site.*%.ya?ml"] = "yaml.ansible",
             [".*/main%.ya?ml"] = "yaml.ansible",
+            [".*%.bu"] = "yaml",
         },
     })
 end
